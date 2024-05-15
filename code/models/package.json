@@ -1,5 +1,5 @@
 {
-  "name": "@adventure/models",
+  "name": "@obs-hook/models",
   "packageManager": "yarn@4.2.2",
   "devDependencies": {
     "@types/node": "^20.12.12",

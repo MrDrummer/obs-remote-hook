@@ -1,9 +1,9 @@
 {
-  "name": "@adventure/socket",
+  "name": "@obs-hook/socket",
   "packageManager": "yarn@4.2.2",
   "dependencies": {
-    "@adventure/core": "workspace:*",
-    "@adventure/models": "workspace:*"
+    "@obs-hook/core": "workspace:*",
+    "@obs-hook/models": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^20.12.12",

@@ -1,5 +1,5 @@
 {
-  "name": "@adventure/root",
+  "name": "@obs-hook/root",
   "packageManager": "yarn@4.2.2",
   "devDependencies": {
     "@tsconfig/node22": "^22.0.0"

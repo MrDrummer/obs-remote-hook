@@ -1,6 +1,9 @@
 {
   "name": "obs-remote-hook",
   "packageManager": "yarn@4.2.2",
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  },
   "workspaces": [
     "code/*"
   ]

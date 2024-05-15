@@ -1,8 +1,8 @@
 {
-  "name": "@adventure/core",
+  "name": "@obs-hook/core",
   "packageManager": "yarn@4.2.2",
   "dependencies": {
-    "@adventure/models": "workspace:*",
+    "@obs-hook/models": "workspace:*",
     "obs-websocket-js": "^5.0.5"
   },
   "devDependencies": {

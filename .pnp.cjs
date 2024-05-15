@@ -15,24 +15,24 @@ const RAW_RUNTIME_STATE =
       "reference": "workspace:."\
     },\
     {\
-      "name": "@adventure/core",\
+      "name": "@obs-hook/core",\
       "reference": "workspace:code/core"\
     },\
     {\
-      "name": "@adventure/models",\
+      "name": "@obs-hook/models",\
       "reference": "workspace:code/models"\
     },\
     {\
-      "name": "@adventure/socket",\
+      "name": "@obs-hook/socket",\
       "reference": "workspace:code/socket"\
     }\
   ],\
   "enableTopLevelFallback": true,\
   "ignorePatternData": "(^(?:\\\\.yarn\\\\/sdks(?:\\\\/(?!\\\\.{1,2}(?:\\\\/|$))(?:(?:(?!(?:^|\\\\/)\\\\.{1,2}(?:\\\\/|$)).)*?)|$))$)",\
   "fallbackExclusionList": [\
-    ["@adventure/core", ["workspace:code/core"]],\
-    ["@adventure/models", ["workspace:code/models"]],\
-    ["@adventure/socket", ["workspace:code/socket"]],\
+    ["@obs-hook/core", ["workspace:code/core"]],\
+    ["@obs-hook/models", ["workspace:code/models"]],\
+    ["@obs-hook/socket", ["workspace:code/socket"]],\
     ["obs-remote-hook", ["workspace:."]]\
   ],\
   "fallbackPool": [\
@@ -42,42 +42,6 @@ const RAW_RUNTIME_STATE =
       [null, {\
         "packageLocation": "./",\
         "packageDependencies": [\
-        ],\
-        "linkType": "SOFT"\
-      }]\
-    ]],\
-    ["@adventure/core", [\
-      ["workspace:code/core", {\
-        "packageLocation": "./code/core/",\
-        "packageDependencies": [\
-          ["@adventure/core", "workspace:code/core"],\
-          ["@adventure/models", "workspace:code/models"],\
-          ["@types/node", "npm:20.12.12"],\
-          ["obs-websocket-js", "npm:5.0.5"],\
-          ["typescript", "patch:typescript@npm%3A5.4.5#optional!builtin<compat/typescript>::version=5.4.5&hash=5adc0c"]\
-        ],\
-        "linkType": "SOFT"\
-      }]\
-    ]],\
-    ["@adventure/models", [\
-      ["workspace:code/models", {\
-        "packageLocation": "./code/models/",\
-        "packageDependencies": [\
-          ["@adventure/models", "workspace:code/models"],\
-          ["@types/node", "npm:20.12.12"],\
-          ["typescript", "patch:typescript@npm%3A5.4.5#optional!builtin<compat/typescript>::version=5.4.5&hash=5adc0c"]\
-        ],\
-        "linkType": "SOFT"\
-      }]\
-    ]],\
-    ["@adventure/socket", [\
-      ["workspace:code/socket", {\
-        "packageLocation": "./code/socket/",\
-        "packageDependencies": [\
-          ["@adventure/socket", "workspace:code/socket"],\
-          ["@adventure/core", "workspace:code/core"],\
-          ["@adventure/models", "workspace:code/models"],\
-          ["@types/node", "npm:20.12.12"],\
           ["typescript", "patch:typescript@npm%3A5.4.5#optional!builtin<compat/typescript>::version=5.4.5&hash=5adc0c"]\
         ],\
         "linkType": "SOFT"\
@@ -90,6 +54,43 @@ const RAW_RUNTIME_STATE =
           ["@msgpack/msgpack", "npm:2.8.0"]\
         ],\
         "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@obs-hook/core", [\
+      ["workspace:code/core", {\
+        "packageLocation": "./code/core/",\
+        "packageDependencies": [\
+          ["@obs-hook/core", "workspace:code/core"],\
+          ["@obs-hook/models", "workspace:code/models"],\
+          ["@types/node", "npm:20.12.12"],\
+          ["obs-websocket-js", "npm:5.0.5"],\
+          ["typescript", "patch:typescript@npm%3A5.4.5#optional!builtin<compat/typescript>::version=5.4.5&hash=5adc0c"]\
+        ],\
+        "linkType": "SOFT"\
+      }]\
+    ]],\
+    ["@obs-hook/models", [\
+      ["workspace:code/models", {\
+        "packageLocation": "./code/models/",\
+        "packageDependencies": [\
+          ["@obs-hook/models", "workspace:code/models"],\
+          ["@types/node", "npm:20.12.12"],\
+          ["typescript", "patch:typescript@npm%3A5.4.5#optional!builtin<compat/typescript>::version=5.4.5&hash=5adc0c"]\
+        ],\
+        "linkType": "SOFT"\
+      }]\
+    ]],\
+    ["@obs-hook/socket", [\
+      ["workspace:code/socket", {\
+        "packageLocation": "./code/socket/",\
+        "packageDependencies": [\
+          ["@obs-hook/socket", "workspace:code/socket"],\
+          ["@obs-hook/core", "workspace:code/core"],\
+          ["@obs-hook/models", "workspace:code/models"],\
+          ["@types/node", "npm:20.12.12"],\
+          ["typescript", "patch:typescript@npm%3A5.4.5#optional!builtin<compat/typescript>::version=5.4.5&hash=5adc0c"]\
+        ],\
+        "linkType": "SOFT"\
       }]\
     ]],\
     ["@types/node", [\
@@ -178,7 +179,8 @@ const RAW_RUNTIME_STATE =
       ["workspace:.", {\
         "packageLocation": "./",\
         "packageDependencies": [\
-          ["obs-remote-hook", "workspace:."]\
+          ["obs-remote-hook", "workspace:."],\
+          ["typescript", "patch:typescript@npm%3A5.4.5#optional!builtin<compat/typescript>::version=5.4.5&hash=5adc0c"]\
         ],\
         "linkType": "SOFT"\
       }]\

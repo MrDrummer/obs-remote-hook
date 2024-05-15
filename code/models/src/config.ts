@@ -1,6 +1,10 @@
 
 export interface Config {
   cut: string
+  audio: Audio[]
+  scenes: Scene[]
+  layouts: Layout[]
+  slots: Slot[]
 }
 
 
