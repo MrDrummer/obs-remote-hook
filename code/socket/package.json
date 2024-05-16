@@ -1,6 +1,12 @@
 {
   "name": "@obs-hook/socket",
   "packageManager": "yarn@4.2.2",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "yarn run tsc",
+    "start": "node dist/index.js",
+    "dev": "yarn run tsc --watch"
+  },
   "dependencies": {
     "@obs-hook/core": "workspace:*",
     "@obs-hook/models": "workspace:*"

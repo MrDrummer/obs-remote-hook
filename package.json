@@ -1,6 +1,11 @@
 {
   "name": "obs-remote-hook",
   "packageManager": "yarn@4.2.2",
+  "scripts": {
+    "build": "yarn workspaces foreach -At run build",
+    "start": "yarn workspace @obs-hook/socket start",
+    "dev": "yarn workspace @obs-hook/socket dev"
+  },
   "devDependencies": {
     "typescript": "^5.4.5"
   },

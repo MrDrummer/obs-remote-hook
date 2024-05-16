@@ -1,6 +1,10 @@
 {
   "name": "@obs-hook/models",
   "packageManager": "yarn@4.2.2",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "yarn run tsc"
+  },
   "devDependencies": {
     "@types/node": "^20.12.12",
     "typescript": "^5.4.5"

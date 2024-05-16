@@ -1,5 +1,4 @@
 {
-  // "extends": "@tsconfig/node22",
   "compilerOptions": {
     "incremental": true,
     "composite": true,
@@ -13,9 +12,6 @@
     "resolveJsonModule": true,
     "declaration": true,
     "allowSyntheticDefaultImports": true,
-    // "declarationMap": true,
-    // "noFallthroughCasesInSwitch": true,
-    "emitDeclarationOnly": true,
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
@@ -24,5 +20,19 @@
     "sourceMap": true,
     "strictFunctionTypes": true,
     "strictNullChecks": true
-  }
+  },
+  "exclude": [
+    "code/**/dist/**"
+  ],
+  "references": [
+    {
+      "path": "./code/core"
+    },
+    {
+      "path": "./code/models"
+    },
+    {
+      "path": "./code/socket"
+    }
+  ]
 }
