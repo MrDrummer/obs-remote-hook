@@ -1,5 +1,8 @@
 cut: CUT
-
+audio:
+  - slug: desktop
+    source: DESKTOP
+    desc: Default desktop audio
 sources:
   - slug: FeedA
     scene: RAW_FEED_A
@@ -23,6 +26,12 @@ slots:
   - slug: Slot1
     scene: SLOT_PRIMARY
     desc: Primary slot
+    scenes:
+      - FeedA
+      - FeedB
   - slug: Slot2
     scene: SLOT_SECONDARY
     desc: Secondary slot
+    scenes:
+      - FeedA
+      - FeedB
