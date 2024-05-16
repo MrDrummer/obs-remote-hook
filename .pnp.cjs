@@ -47,15 +47,6 @@ const RAW_RUNTIME_STATE =
         "linkType": "SOFT"\
       }]\
     ]],\
-    ["@msgpack/msgpack", [\
-      ["npm:2.8.0", {\
-        "packageLocation": "../../../C:/Users/drummer/AppData/Local/Yarn/Berry/cache/@msgpack-msgpack-npm-2.8.0-c4768c71d4-10c0.zip/node_modules/@msgpack/msgpack/",\
-        "packageDependencies": [\
-          ["@msgpack/msgpack", "npm:2.8.0"]\
-        ],\
-        "linkType": "HARD"\
-      }]\
-    ]],\
     ["@obs-hook/core", [\
       ["workspace:code/core", {\
         "packageLocation": "./code/core/",\
@@ -63,7 +54,6 @@ const RAW_RUNTIME_STATE =
           ["@obs-hook/core", "workspace:code/core"],\
           ["@obs-hook/models", "workspace:code/models"],\
           ["@types/node", "npm:20.12.12"],\
-          ["obs-websocket-js", "npm:5.0.5"],\
           ["typescript", "patch:typescript@npm%3A5.4.5#optional!builtin<compat/typescript>::version=5.4.5&hash=5adc0c"]\
         ],\
         "linkType": "SOFT"\
@@ -103,78 +93,6 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
-    ["crypto-js", [\
-      ["npm:4.2.0", {\
-        "packageLocation": "../../../C:/Users/drummer/AppData/Local/Yarn/Berry/cache/crypto-js-npm-4.2.0-d6f7744e63-10c0.zip/node_modules/crypto-js/",\
-        "packageDependencies": [\
-          ["crypto-js", "npm:4.2.0"]\
-        ],\
-        "linkType": "HARD"\
-      }]\
-    ]],\
-    ["debug", [\
-      ["npm:4.3.4", {\
-        "packageLocation": "../../../C:/Users/drummer/AppData/Local/Yarn/Berry/cache/debug-npm-4.3.4-4513954577-10c0.zip/node_modules/debug/",\
-        "packageDependencies": [\
-          ["debug", "npm:4.3.4"]\
-        ],\
-        "linkType": "SOFT"\
-      }],\
-      ["virtual:e102743adfecdbba9ad6e7be1c53dca342b5e0be3a3d2f636d162cea67e6725f87bb412aa0b1d129dd084fbd46c2a89b7ce97d10b7de808d4b669c4e5ede9105#npm:4.3.4", {\
-        "packageLocation": "./.yarn/__virtual__/debug-virtual-06ad36e808/4/C:/Users/drummer/AppData/Local/Yarn/Berry/cache/debug-npm-4.3.4-4513954577-10c0.zip/node_modules/debug/",\
-        "packageDependencies": [\
-          ["debug", "virtual:e102743adfecdbba9ad6e7be1c53dca342b5e0be3a3d2f636d162cea67e6725f87bb412aa0b1d129dd084fbd46c2a89b7ce97d10b7de808d4b669c4e5ede9105#npm:4.3.4"],\
-          ["@types/supports-color", null],\
-          ["ms", "npm:2.1.2"],\
-          ["supports-color", null]\
-        ],\
-        "packagePeers": [\
-          "@types/supports-color",\
-          "supports-color"\
-        ],\
-        "linkType": "HARD"\
-      }]\
-    ]],\
-    ["eventemitter3", [\
-      ["npm:5.0.1", {\
-        "packageLocation": "../../../C:/Users/drummer/AppData/Local/Yarn/Berry/cache/eventemitter3-npm-5.0.1-5e423b7df3-10c0.zip/node_modules/eventemitter3/",\
-        "packageDependencies": [\
-          ["eventemitter3", "npm:5.0.1"]\
-        ],\
-        "linkType": "HARD"\
-      }]\
-    ]],\
-    ["isomorphic-ws", [\
-      ["npm:5.0.0", {\
-        "packageLocation": "../../../C:/Users/drummer/AppData/Local/Yarn/Berry/cache/isomorphic-ws-npm-5.0.0-9c72251c2d-10c0.zip/node_modules/isomorphic-ws/",\
-        "packageDependencies": [\
-          ["isomorphic-ws", "npm:5.0.0"]\
-        ],\
-        "linkType": "SOFT"\
-      }],\
-      ["virtual:e102743adfecdbba9ad6e7be1c53dca342b5e0be3a3d2f636d162cea67e6725f87bb412aa0b1d129dd084fbd46c2a89b7ce97d10b7de808d4b669c4e5ede9105#npm:5.0.0", {\
-        "packageLocation": "./.yarn/__virtual__/isomorphic-ws-virtual-1f8a292f35/4/C:/Users/drummer/AppData/Local/Yarn/Berry/cache/isomorphic-ws-npm-5.0.0-9c72251c2d-10c0.zip/node_modules/isomorphic-ws/",\
-        "packageDependencies": [\
-          ["isomorphic-ws", "virtual:e102743adfecdbba9ad6e7be1c53dca342b5e0be3a3d2f636d162cea67e6725f87bb412aa0b1d129dd084fbd46c2a89b7ce97d10b7de808d4b669c4e5ede9105#npm:5.0.0"],\
-          ["@types/ws", null],\
-          ["ws", "virtual:e102743adfecdbba9ad6e7be1c53dca342b5e0be3a3d2f636d162cea67e6725f87bb412aa0b1d129dd084fbd46c2a89b7ce97d10b7de808d4b669c4e5ede9105#npm:8.17.0"]\
-        ],\
-        "packagePeers": [\
-          "@types/ws",\
-          "ws"\
-        ],\
-        "linkType": "HARD"\
-      }]\
-    ]],\
-    ["ms", [\
-      ["npm:2.1.2", {\
-        "packageLocation": "../../../C:/Users/drummer/AppData/Local/Yarn/Berry/cache/ms-npm-2.1.2-ec0c1512ff-10c0.zip/node_modules/ms/",\
-        "packageDependencies": [\
-          ["ms", "npm:2.1.2"]\
-        ],\
-        "linkType": "HARD"\
-      }]\
-    ]],\
     ["obs-remote-hook", [\
       ["workspace:.", {\
         "packageLocation": "./",\
@@ -183,31 +101,6 @@ const RAW_RUNTIME_STATE =
           ["typescript", "patch:typescript@npm%3A5.4.5#optional!builtin<compat/typescript>::version=5.4.5&hash=5adc0c"]\
         ],\
         "linkType": "SOFT"\
-      }]\
-    ]],\
-    ["obs-websocket-js", [\
-      ["npm:5.0.5", {\
-        "packageLocation": "../../../C:/Users/drummer/AppData/Local/Yarn/Berry/cache/obs-websocket-js-npm-5.0.5-e102743adf-10c0.zip/node_modules/obs-websocket-js/",\
-        "packageDependencies": [\
-          ["obs-websocket-js", "npm:5.0.5"],\
-          ["@msgpack/msgpack", "npm:2.8.0"],\
-          ["crypto-js", "npm:4.2.0"],\
-          ["debug", "virtual:e102743adfecdbba9ad6e7be1c53dca342b5e0be3a3d2f636d162cea67e6725f87bb412aa0b1d129dd084fbd46c2a89b7ce97d10b7de808d4b669c4e5ede9105#npm:4.3.4"],\
-          ["eventemitter3", "npm:5.0.1"],\
-          ["isomorphic-ws", "virtual:e102743adfecdbba9ad6e7be1c53dca342b5e0be3a3d2f636d162cea67e6725f87bb412aa0b1d129dd084fbd46c2a89b7ce97d10b7de808d4b669c4e5ede9105#npm:5.0.0"],\
-          ["type-fest", "npm:3.13.1"],\
-          ["ws", "virtual:e102743adfecdbba9ad6e7be1c53dca342b5e0be3a3d2f636d162cea67e6725f87bb412aa0b1d129dd084fbd46c2a89b7ce97d10b7de808d4b669c4e5ede9105#npm:8.17.0"]\
-        ],\
-        "linkType": "HARD"\
-      }]\
-    ]],\
-    ["type-fest", [\
-      ["npm:3.13.1", {\
-        "packageLocation": "../../../C:/Users/drummer/AppData/Local/Yarn/Berry/cache/type-fest-npm-3.13.1-4bd562882d-10c0.zip/node_modules/type-fest/",\
-        "packageDependencies": [\
-          ["type-fest", "npm:3.13.1"]\
-        ],\
-        "linkType": "HARD"\
       }]\
     ]],\
     ["typescript", [\
@@ -224,32 +117,6 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../../C:/Users/drummer/AppData/Local/Yarn/Berry/cache/undici-types-npm-5.26.5-de4f7c7bb9-10c0.zip/node_modules/undici-types/",\
         "packageDependencies": [\
           ["undici-types", "npm:5.26.5"]\
-        ],\
-        "linkType": "HARD"\
-      }]\
-    ]],\
-    ["ws", [\
-      ["npm:8.17.0", {\
-        "packageLocation": "../../../C:/Users/drummer/AppData/Local/Yarn/Berry/cache/ws-npm-8.17.0-05fb441faf-10c0.zip/node_modules/ws/",\
-        "packageDependencies": [\
-          ["ws", "npm:8.17.0"]\
-        ],\
-        "linkType": "SOFT"\
-      }],\
-      ["virtual:e102743adfecdbba9ad6e7be1c53dca342b5e0be3a3d2f636d162cea67e6725f87bb412aa0b1d129dd084fbd46c2a89b7ce97d10b7de808d4b669c4e5ede9105#npm:8.17.0", {\
-        "packageLocation": "./.yarn/__virtual__/ws-virtual-b326ffa2a1/4/C:/Users/drummer/AppData/Local/Yarn/Berry/cache/ws-npm-8.17.0-05fb441faf-10c0.zip/node_modules/ws/",\
-        "packageDependencies": [\
-          ["ws", "virtual:e102743adfecdbba9ad6e7be1c53dca342b5e0be3a3d2f636d162cea67e6725f87bb412aa0b1d129dd084fbd46c2a89b7ce97d10b7de808d4b669c4e5ede9105#npm:8.17.0"],\
-          ["@types/bufferutil", null],\
-          ["@types/utf-8-validate", null],\
-          ["bufferutil", null],\
-          ["utf-8-validate", null]\
-        ],\
-        "packagePeers": [\
-          "@types/bufferutil",\
-          "@types/utf-8-validate",\
-          "bufferutil",\
-          "utf-8-validate"\
         ],\
         "linkType": "HARD"\
       }]\

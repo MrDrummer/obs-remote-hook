@@ -26,13 +26,13 @@
   ],
   "references": [
     {
-      "path": "./core/core"
+      "path": "./code/core"
     },
     {
-      "path": "./core/models"
+      "path": "./code/models"
     },
     {
-      "path": "./core/socket"
+      "path": "./code/socket"
     }
   ]
 }
