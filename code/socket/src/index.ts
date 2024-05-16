@@ -1,5 +1,5 @@
 import { ObsHook } from "@obs-hook/core"
-// import { Config } from "@obs-hook/models"
+import { Config } from "@obs-hook/models"
 
 const hook = new ObsHook({
   cut: 'cut',
@@ -16,5 +16,7 @@ const hook = new ObsHook({
     { slug: 'slot1', desc: 'slot1', scene: 'scene1', scenes: ['scene1'] }
   ]
 })
+
+console.log('hook :', hook)
 
 // hook.doThing()
