@@ -23,16 +23,5 @@
   },
   "exclude": [
     "code/**/dist/**"
-  ],
-  "references": [
-    {
-      "path": "./code/core"
-    },
-    {
-      "path": "./code/models"
-    },
-    {
-      "path": "./code/socket"
-    }
   ]
 }
