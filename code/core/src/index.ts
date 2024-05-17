@@ -1,4 +1,4 @@
-import OBSWebSocket, { EventSubscription } from 'obs-websocket-js'
+import OBSWebSocket, { EventSubscription, RequestBatchRequest } from 'obs-websocket-js'
 import { BaseSecrets, Config } from "@obs-hook/models"
 import { ObsSceneItem } from "./obs"
 
@@ -27,6 +27,11 @@ export class ObsHook implements IObsHook {
     })
   }
 
+  public async cut (): Promise<void> {
+    const sceneName = this._config.cut
+    await this._obs.call("SetCurrentProgramScene", { sceneName })
+  }
+
   public async setLayout (sceneName: string): Promise<void> {
     await this._obs.call("SetCurrentProgramScene", { sceneName })
   }
@@ -41,21 +46,25 @@ export class ObsHook implements IObsHook {
 
     const toEnable = sceneItems.find((sceneItem) => sceneItem.sourceName === source)?.sceneItemId
 
-    if (!toEnable) {
+    if (toEnable == null) {
       throw new Error(`Source ${ source } not found in scene ${ slotScene }`)
     }
 
+    const changes: RequestBatchRequest[] = []
+
     console.log('toEnable :', toEnable)
-    await this._obs.call("SetSceneItemEnabled", { sceneItemId: toEnable, sceneName: slotScene, sceneItemEnabled: true })
+    changes.push({ requestType: "SetSceneItemEnabled", requestData: { sceneItemId: toEnable, sceneName: slotScene, sceneItemEnabled: true } })
 
     const toDisable = sceneItems.filter((sceneItem) => sceneItem.sceneItemEnabled).map(sc => sc.sceneItemId)
 
     console.log('toDisable :', toDisable)
     for (const sceneItemId of toDisable) {
       if (sceneItemId !== toEnable) {
-        await this._obs.call("SetSceneItemEnabled", { sceneItemId, sceneName: slotScene, sceneItemEnabled: false })
+        changes.push({ requestType: "SetSceneItemEnabled", requestData: { sceneItemId, sceneName: slotScene, sceneItemEnabled: false } })
       }
     }
+
+    await this._obs.callBatch(changes)
 
   }
 }

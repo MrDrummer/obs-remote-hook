@@ -51,10 +51,10 @@ I am not 100% on the technology stack yet. I am considering:
   - Mute [true/false]
   - Mutes or unmutes all audio channels
 - IncreaseAudio
-  - AudioChannel, Increase [true/false]
+  - AudioChannel, ChangeBy, Increase [true/false]
   - Increases the audio volume
 - DecreaseAudio
-  - AudioChannel, Decrease [true/false]
+  - AudioChannel, ChangeBy, Decrease [true/false]
   - Decreases the audio volume
 - SetAudio
   - AudioChannel, Volume

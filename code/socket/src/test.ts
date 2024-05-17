@@ -28,12 +28,13 @@ const run = async () => {
   // const version = await call("GetVersion")
   // console.log('version :', version)
 
-  await hook.setLayout("Slot 1")
+  await hook.setLayout("LAYOUT_PIP")
 
   // const scene = await hook.getSceneItems("Slot 1")
   // console.log('scene :', scene)
 
-  await hook.setSlot("Slot 1", "Scene 2")
+  await hook.setSlot("SLOT_PRIMARY", "RAW_CAB")
+  await hook.setSlot("SLOT_BOTTOM", "RAW_ROAD")
 }
 
 run()
