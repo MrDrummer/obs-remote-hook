@@ -39,7 +39,7 @@ I am not 100% on the technology stack yet. I am considering:
 - GetConfiguration
   - Returns the configuration
 - SetSlot
-  - SlotName, FeedName
+  - SlotName, SourceName
   - Sets the slot to the feed
 - SetLayout
   - LayoutName
