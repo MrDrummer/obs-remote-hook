@@ -9,7 +9,8 @@
   },
   "dependencies": {
     "@obs-hook/core": "workspace:*",
-    "@obs-hook/models": "workspace:*"
+    "@obs-hook/models": "workspace:*",
+    "yaml": "^2.4.2"
   },
   "devDependencies": {
     "@types/node": "^20.12.12",

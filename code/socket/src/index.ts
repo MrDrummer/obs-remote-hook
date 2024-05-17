@@ -1,22 +1,39 @@
 import { ObsHook } from "@obs-hook/core"
-import { Config } from "@obs-hook/models"
+import YAML from "yaml"
 
-const hook = new ObsHook({
-  cut: 'cut',
-  audio: [
-    { slug: 'audio1', desc: 'audio1', source: 'source1' }
-  ],
-  scenes: [
-    { slug: 'scene1', desc: 'scene1', scene: 'scene1' }
-  ],
-  layouts: [
-    { slug: 'layout1', desc: 'layout1', scene: 'scene1', slots: ['slot1'] }
-  ],
-  slots: [
-    { slug: 'slot1', desc: 'slot1', scene: 'scene1', scenes: ['scene1'] }
-  ]
-})
+import fs from "fs"
+import path from "path"
+import { BaseSecrets, Config } from "@obs-hook/models"
 
-console.log('hook :', hook)
+const parseYaml = <T> (relativePath: string): T => {
+  const filePath = path.join(__dirname, relativePath)
 
-// hook.doThing()
+  const file = fs.readFileSync(filePath, "utf8")
+  const data: T = YAML.parse(file)
+  return data
+}
+
+const run = async () => {
+  const configDir = "../../../config"
+  const obsConfig: Config = parseYaml<Config>(`${ configDir }/config.yaml`)
+  const obsSecrets: BaseSecrets = parseYaml<BaseSecrets>(`${ configDir }/secrets.yaml`)
+
+  const hook = new ObsHook(obsConfig, obsSecrets)
+
+  // const on = hook._obs.on.bind(hook._obs)
+  // const call = hook._obs.call.bind(hook._obs)
+
+  await hook.connect()
+
+  // const version = await call("GetVersion")
+  // console.log('version :', version)
+
+  await hook.setLayout("Slot 1")
+
+  // const scene = await hook.getSceneItems("Slot 1")
+  // console.log('scene :', scene)
+
+  await hook.setSlot("Slot 1", "Scene 2")
+}
+
+run()
