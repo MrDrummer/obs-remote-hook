@@ -12,3 +12,4 @@ yarn-error.log
 **/dist/
 
 config.yaml
+secrets.yaml

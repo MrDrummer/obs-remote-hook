@@ -88,7 +88,8 @@ const RAW_RUNTIME_STATE =
           ["@obs-hook/core", "workspace:code/core"],\
           ["@obs-hook/models", "workspace:code/models"],\
           ["@types/node", "npm:20.12.12"],\
-          ["typescript", "patch:typescript@npm%3A5.4.5#optional!builtin<compat/typescript>::version=5.4.5&hash=5adc0c"]\
+          ["typescript", "patch:typescript@npm%3A5.4.5#optional!builtin<compat/typescript>::version=5.4.5&hash=5adc0c"],\
+          ["yaml", "npm:2.4.2"]\
         ],\
         "linkType": "SOFT"\
       }]\
@@ -250,6 +251,15 @@ const RAW_RUNTIME_STATE =
           "@types/utf-8-validate",\
           "bufferutil",\
           "utf-8-validate"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["yaml", [\
+      ["npm:2.4.2", {\
+        "packageLocation": "../../../C:/Users/drummer/AppData/Local/Yarn/Berry/cache/yaml-npm-2.4.2-5c2ee7f06c-10c0.zip/node_modules/yaml/",\
+        "packageDependencies": [\
+          ["yaml", "npm:2.4.2"]\
         ],\
         "linkType": "HARD"\
       }]\
