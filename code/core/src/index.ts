@@ -95,10 +95,10 @@ export class ObsHook implements IObsHook {
 
     // Only enable if it isn't already enabled.
     if (!toEnable.sceneItemEnabled) {
-      console.log('toEnable :', toEnable)
+      console.log('toEnable :', toEnable.sceneItemId)
       changes.push({ requestType: "SetSceneItemEnabled", requestData: { sceneItemId: toEnable.sceneItemId, sceneName: slotConfig.scene, sceneItemEnabled: true } })
     } else {
-      console.log('source already enabled :', toEnable.sceneItemId, toEnable.sceneItemEnabled)
+      console.log('source already enabled :', toEnable.sceneItemId)
     }
 
     const toDisable = sceneItems.filter((sceneItem) => sceneItem.sceneItemEnabled && sceneItem.sceneItemId !== toEnable.sceneItemId).map(sc => sc.sceneItemId)
@@ -130,6 +130,10 @@ export class ObsHook implements IObsHook {
   public async muteAllAudio (mute: boolean): Promise<void> {
     console.log('mute :', mute)
     // await this._obs.call("SetMute", { source: "all", mute })
+  }
+
+  public getConfig (): Config {
+    return this._config
   }
 
   // public async changeAudio (source: string, percentageChange: number): Promise<number> {

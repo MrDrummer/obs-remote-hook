@@ -6,8 +6,8 @@
   ],
   "scripts": {
     "buildall": "yarn workspaces foreach -At run build",
-    "start": "yarn workspace @obs-hook/socket start",
-    "dev": "yarn workspace @obs-hook/socket dev",
+    "start": "yarn workspace @obs-hook/http start",
+    "dev": "yarn workspace @obs-hook/http dev",
     "devstart": "yarn buildall && yarn start"
   },
   "devDependencies": {

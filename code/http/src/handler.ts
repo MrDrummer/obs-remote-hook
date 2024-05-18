@@ -80,6 +80,10 @@ export class HttpHandler implements IHandler {
     // this._obsHook.stopStream()
   }
 
+  getConfig (): Config {
+    return this._obsHook.getConfig()
+  }
+
   async executeCommand (command: ObsCommand): Promise<number | Config | void> {
     switch (command.command) {
       case "cut":
@@ -102,6 +106,8 @@ export class HttpHandler implements IHandler {
         return this.startStream()
       case "stopStream":
         return this.stopStream()
+      case "getConfig":
+        return this.getConfig()
       default:
         throw new Error(`Unknown command: ${ command }`)
     }

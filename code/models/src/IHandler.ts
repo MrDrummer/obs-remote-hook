@@ -1,3 +1,4 @@
+import { Config } from "./config"
 
 export interface IHandler {
   setup (): Promise<void>
@@ -11,5 +12,5 @@ export interface IHandler {
   setAudio (sourceSlug: string, percentage: number): Promise<void>
   startStream (): Promise<void>
   stopStream (): Promise<void>
-  // getConfig (): Promise<Config>
+  getConfig (): Config
 }
