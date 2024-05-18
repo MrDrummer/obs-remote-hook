@@ -3,7 +3,7 @@ import { Config, IHandler, ObsCommandResult } from "@obs-hook/models"
 import { ObsCommand } from "@obs-hook/models"
 import express, { Express } from "express"
 
-export class ObsHandler implements IHandler {
+export class HttpHandler implements IHandler {
   private _obsHook: ObsHook
   private _express: Express
   private _expressPort: number

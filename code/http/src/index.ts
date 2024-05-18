@@ -4,7 +4,7 @@ import YAML from "yaml"
 import fs from "fs"
 import path from "path"
 import { BaseSecrets, Config } from "@obs-hook/models"
-import { ObsHandler } from "./handler"
+import { HttpHandler } from "./handler"
 
 const parseYaml = <T> (relativePath: string): T => {
   const filePath = path.join(__dirname, relativePath)
@@ -21,7 +21,7 @@ const run = async () => {
 
   const hook = new ObsHook(obsConfig, obsSecrets)
 
-  const obsHandler = new ObsHandler(hook)
+  const obsHandler = new HttpHandler(hook)
 
   await obsHandler.setup()
 

@@ -32,7 +32,7 @@
       "path": "./code/models"
     },
     {
-      "path": "./code/socket"
+      "path": "./code/http"
     }
   ]
 }

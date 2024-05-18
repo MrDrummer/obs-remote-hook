@@ -23,18 +23,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@obs-hook/models@workspace:*, @obs-hook/models@workspace:code/models":
+"@obs-hook/http@workspace:code/http":
   version: 0.0.0-use.local
-  resolution: "@obs-hook/models@workspace:code/models"
-  dependencies:
-    "@types/node": "npm:^20.12.12"
-    typescript: "npm:^5.4.5"
-  languageName: unknown
-  linkType: soft
-
-"@obs-hook/socket@workspace:code/socket":
-  version: 0.0.0-use.local
-  resolution: "@obs-hook/socket@workspace:code/socket"
+  resolution: "@obs-hook/http@workspace:code/http"
   dependencies:
     "@obs-hook/core": "workspace:*"
     "@obs-hook/models": "workspace:*"
@@ -45,6 +36,15 @@ __metadata:
     express: "npm:^4.19.2"
     typescript: "npm:^5.4.5"
     yaml: "npm:^2.4.2"
+  languageName: unknown
+  linkType: soft
+
+"@obs-hook/models@workspace:*, @obs-hook/models@workspace:code/models":
+  version: 0.0.0-use.local
+  resolution: "@obs-hook/models@workspace:code/models"
+  dependencies:
+    "@types/node": "npm:^20.12.12"
+    typescript: "npm:^5.4.5"
   languageName: unknown
   linkType: soft
 

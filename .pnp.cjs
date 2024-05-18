@@ -19,20 +19,20 @@ const RAW_RUNTIME_STATE =
       "reference": "workspace:code/core"\
     },\
     {\
-      "name": "@obs-hook/models",\
-      "reference": "workspace:code/models"\
+      "name": "@obs-hook/http",\
+      "reference": "workspace:code/http"\
     },\
     {\
-      "name": "@obs-hook/socket",\
-      "reference": "workspace:code/socket"\
+      "name": "@obs-hook/models",\
+      "reference": "workspace:code/models"\
     }\
   ],\
   "enableTopLevelFallback": true,\
   "ignorePatternData": "(^(?:\\\\.yarn\\\\/sdks(?:\\\\/(?!\\\\.{1,2}(?:\\\\/|$))(?:(?:(?!(?:^|\\\\/)\\\\.{1,2}(?:\\\\/|$)).)*?)|$))$)",\
   "fallbackExclusionList": [\
     ["@obs-hook/core", ["workspace:code/core"]],\
+    ["@obs-hook/http", ["workspace:code/http"]],\
     ["@obs-hook/models", ["workspace:code/models"]],\
-    ["@obs-hook/socket", ["workspace:code/socket"]],\
     ["obs-remote-hook", ["workspace:."]]\
   ],\
   "fallbackPool": [\
@@ -69,22 +69,11 @@ const RAW_RUNTIME_STATE =
         "linkType": "SOFT"\
       }]\
     ]],\
-    ["@obs-hook/models", [\
-      ["workspace:code/models", {\
-        "packageLocation": "./code/models/",\
+    ["@obs-hook/http", [\
+      ["workspace:code/http", {\
+        "packageLocation": "./code/http/",\
         "packageDependencies": [\
-          ["@obs-hook/models", "workspace:code/models"],\
-          ["@types/node", "npm:20.12.12"],\
-          ["typescript", "patch:typescript@npm%3A5.4.5#optional!builtin<compat/typescript>::version=5.4.5&hash=5adc0c"]\
-        ],\
-        "linkType": "SOFT"\
-      }]\
-    ]],\
-    ["@obs-hook/socket", [\
-      ["workspace:code/socket", {\
-        "packageLocation": "./code/socket/",\
-        "packageDependencies": [\
-          ["@obs-hook/socket", "workspace:code/socket"],\
+          ["@obs-hook/http", "workspace:code/http"],\
           ["@obs-hook/core", "workspace:code/core"],\
           ["@obs-hook/models", "workspace:code/models"],\
           ["@types/body-parser", "npm:1.19.5"],\
@@ -94,6 +83,17 @@ const RAW_RUNTIME_STATE =
           ["express", "npm:4.19.2"],\
           ["typescript", "patch:typescript@npm%3A5.4.5#optional!builtin<compat/typescript>::version=5.4.5&hash=5adc0c"],\
           ["yaml", "npm:2.4.2"]\
+        ],\
+        "linkType": "SOFT"\
+      }]\
+    ]],\
+    ["@obs-hook/models", [\
+      ["workspace:code/models", {\
+        "packageLocation": "./code/models/",\
+        "packageDependencies": [\
+          ["@obs-hook/models", "workspace:code/models"],\
+          ["@types/node", "npm:20.12.12"],\
+          ["typescript", "patch:typescript@npm%3A5.4.5#optional!builtin<compat/typescript>::version=5.4.5&hash=5adc0c"]\
         ],\
         "linkType": "SOFT"\
       }]\
