@@ -43,12 +43,12 @@ export class ObsHook implements IObsHook {
   }
 
   public async setLayout (sceneSlug: string): Promise<void> {
-    const layoutConfig = this._configHelper.getLayoutFromSlug(sceneSlug)
-    if (layoutConfig == null) {
+    const sceneConfig = this._configHelper.getLayoutFromSlug(sceneSlug) ?? this._configHelper.getSceneFromSlug(sceneSlug)
+    if (sceneConfig == null) {
       throw new Error(`Layout ${ sceneSlug } not found`)
     }
-    await this._obs.call("SetCurrentProgramScene", { sceneName: layoutConfig.scene })
-    console.info('Layout set to :', layoutConfig.scene)
+    await this._obs.call("SetCurrentProgramScene", { sceneName: sceneConfig.scene })
+    console.info('Layout set to :', sceneConfig.scene)
   }
 
   public async getSceneItems (sceneSlug: string): Promise<ObsSceneItem[]> {

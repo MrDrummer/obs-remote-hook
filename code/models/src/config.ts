@@ -1,6 +1,8 @@
 
 export interface Config {
   cut: string
+  allowStart: boolean
+  allowStop: boolean
   audio: Audio[]
   scenes: Scene[]
   layouts: Layout[]

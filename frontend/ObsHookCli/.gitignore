@@ -1,6 +1,6 @@
 command_queue.txt
 autocommit_state.txt
 config.json
-main.spec
+*.spec
 dist
 build
