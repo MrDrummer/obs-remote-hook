@@ -2,6 +2,7 @@ import OBSWebSocket, { EventSubscription, RequestBatchRequest } from 'obs-websoc
 import { BaseSecrets, Config } from "@obs-hook/models"
 import { ObsSceneItem } from "./obs"
 import { ConfigHelper } from "./validator"
+export { ConfigHelper } from "./validator"
 
 export interface IObsHook {
   connect (): Promise<void>
@@ -31,70 +32,93 @@ export class ObsHook implements IObsHook {
   }
 
   public async cut (): Promise<void> {
-    const sceneName = this._config.cut
-    await this._obs.call("SetCurrentProgramScene", { sceneName })
-  }
+    const sceneSlug = this._config.cut
+    const sceneConfig = this._configHelper.getSceneFromSlug(sceneSlug)
 
-  public async setLayout (sceneName: string): Promise<void> {
-    const isLayout = this._configHelper.isLayout(sceneName)
-    if (!isLayout) {
-      throw new Error(`Layout ${ sceneName } not found`)
+    if (sceneConfig == null) {
+      throw new Error(`Scene ${ sceneSlug } not found`)
     }
-    await this._obs.call("SetCurrentProgramScene", { sceneName })
+
+    await this._obs.call("SetCurrentProgramScene", { sceneName: sceneConfig.scene })
   }
 
-  public async getSceneItems (scene: string): Promise<ObsSceneItem[]> {
+  public async setLayout (sceneSlug: string): Promise<void> {
+    const layoutConfig = this._configHelper.getLayoutFromSlug(sceneSlug)
+    if (layoutConfig == null) {
+      throw new Error(`Layout ${ sceneSlug } not found`)
+    }
+    await this._obs.call("SetCurrentProgramScene", { sceneName: layoutConfig.scene })
+    console.info('Layout set to :', layoutConfig.scene)
+  }
 
-    const out = await this._obs.call("GetSceneItemList", { sceneName: scene })
+  public async getSceneItems (sceneSlug: string): Promise<ObsSceneItem[]> {
+
+    const out = await this._obs.call("GetSceneItemList", { sceneName: sceneSlug })
     return out.sceneItems as unknown as ObsSceneItem[]
   }
 
-  public async setSlot (slotScene: string, source: string): Promise<void> {
-    const isSlot = this._configHelper.isSlot(slotScene)
+  public async setSlot (slotSceneSlug: string, sourceSlug: string): Promise<void> {
+    const slotConfig = this._configHelper.getSlotFromSlug(slotSceneSlug)
 
-    if (!isSlot) {
-      throw new Error(`Slot ${ slotScene } not found`)
+    if (slotConfig == null) {
+      throw new Error(`Slot ${ slotSceneSlug } not found`)
     }
 
-    const isSlotSource = this._configHelper.sourceBelongsToSlot(slotScene, source)
+    const isSlotSource = this._configHelper.sourceBelongsToSlot(slotSceneSlug, sourceSlug)
 
-    if (!isSlotSource) {
-      throw new Error(`Source ${ source } does not belong to slot ${ slotScene }`)
+    if (isSlotSource == null) {
+      throw new Error(`Source ${ sourceSlug } does not belong to slot ${ slotSceneSlug }`)
     }
 
-    const sceneItems = await this.getSceneItems(slotScene)
+    // console.log('slotConfig, sourceSlug :', slotConfig, sourceSlug)
 
-    const toEnable = sceneItems.find((sceneItem) => sceneItem.sourceName === source)?.sceneItemId
+
+    // Need to get the existing scene items in order to get the sceneItemId.
+    const sceneItems = await this.getSceneItems(slotConfig.scene)
+
+    const sourceConfig = this._configHelper.getSceneFromSlug(sourceSlug)
+
+    if (sourceConfig == null) {
+      throw new Error(`Scene ${ slotConfig.scene } not found`)
+    }
+
+    // console.log('sceneItems :', sceneItems)
+
+    const toEnable = sceneItems.find((sceneItem) => sceneItem.sourceName === sourceConfig.scene)
 
     if (toEnable == null) {
-      throw new Error(`Source ${ source } not found in scene ${ slotScene }`)
+      throw new Error(`Source ${ sourceSlug } not found in scene ${ slotSceneSlug }`)
     }
 
     const changes: RequestBatchRequest[] = []
 
-    console.log('toEnable :', toEnable)
-    changes.push({ requestType: "SetSceneItemEnabled", requestData: { sceneItemId: toEnable, sceneName: slotScene, sceneItemEnabled: true } })
 
-    const toDisable = sceneItems.filter((sceneItem) => sceneItem.sceneItemEnabled).map(sc => sc.sceneItemId)
+    // Only enable if it isn't already enabled.
+    if (!toEnable.sceneItemEnabled) {
+      console.log('toEnable :', toEnable)
+      changes.push({ requestType: "SetSceneItemEnabled", requestData: { sceneItemId: toEnable.sceneItemId, sceneName: slotConfig.scene, sceneItemEnabled: true } })
+    } else {
+      console.log('source already enabled :', toEnable.sceneItemId, toEnable.sceneItemEnabled)
+    }
+
+    const toDisable = sceneItems.filter((sceneItem) => sceneItem.sceneItemEnabled && sceneItem.sceneItemId !== toEnable.sceneItemId).map(sc => sc.sceneItemId)
 
     console.log('toDisable :', toDisable)
     for (const sceneItemId of toDisable) {
-      if (sceneItemId !== toEnable) {
-        changes.push({ requestType: "SetSceneItemEnabled", requestData: { sceneItemId, sceneName: slotScene, sceneItemEnabled: false } })
-      }
+      changes.push({ requestType: "SetSceneItemEnabled", requestData: { sceneItemId, sceneName: slotConfig.scene, sceneItemEnabled: false } })
     }
 
     await this._obs.callBatch(changes)
   }
 
-  public async muteAudio (source: string, mute: boolean): Promise<void> {
-    const isAudio = this._configHelper.isAudio(source)
+  public async muteAudio (sourceSlug: string, mute: boolean): Promise<void> {
+    const audioConfig = this._configHelper.getAudioFromSlug(sourceSlug)
 
-    if (!isAudio) {
-      throw new Error(`Audio ${ source } not found`)
+    if (audioConfig == null) {
+      throw new Error(`Audio ${ sourceSlug } not found`)
     }
 
-    await this._obs.call("SetInputMute", { inputName: source, inputMuted: mute })
+    await this._obs.call("SetInputMute", { inputName: sourceSlug, inputMuted: mute })
   }
 
   public async getAllAudioSources (): Promise<number> {

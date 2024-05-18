@@ -10,9 +10,13 @@
   "dependencies": {
     "@obs-hook/core": "workspace:*",
     "@obs-hook/models": "workspace:*",
+    "body-parser": "^1.20.2",
+    "express": "^4.19.2",
     "yaml": "^2.4.2"
   },
   "devDependencies": {
+    "@types/body-parser": "^1",
+    "@types/express": "^4",
     "@types/node": "^20.12.12",
     "typescript": "^5.4.5"
   }

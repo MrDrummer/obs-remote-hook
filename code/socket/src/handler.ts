@@ -1,29 +1,63 @@
 import { ObsHook } from "@obs-hook/core";
-import { Config, IHandler } from "@obs-hook/models"
-import { ObsCommand } from "@obs-hook/models/dist/command"
+import { Config, IHandler, ObsCommandResult } from "@obs-hook/models"
+import { ObsCommand } from "@obs-hook/models"
+import express, { Express } from "express"
 
 export class ObsHandler implements IHandler {
   private _obsHook: ObsHook
-  constructor (obsHook: ObsHook) {
+  private _express: Express
+  private _expressPort: number
+
+  constructor (obsHook: ObsHook, port: number = 3000) {
     this._obsHook = obsHook
+
+    this._express = express()
+
+    this._expressPort = port
   }
   async setup (): Promise<void> {
     await this._obsHook.connect()
+
+    this._express.use(express.json())
+    this._express.post("/command", async (req, res) => {
+      const command = req.body as ObsCommand[]
+      try {
+        const results: ObsCommandResult[] = []
+
+        for (const c of command) {
+          console.log("==========")
+          console.log('command :', c)
+          const result = await this.executeCommand(c)
+          if ((c.command === "increaseAudio" || c.command === "decreaseAudio" || c.command === "getConfig") && (result != null)) {
+            results.push({ command: c.command, result } as ObsCommandResult) //TODO: No clue how to remove the need to cast here
+          }
+        }
+
+        res.send(results)
+      } catch (e) {
+        console.error('ObsHandler /command error :', e)
+        res.status(500).send("There was an error.")
+      }
+    })
+
+    this._express.listen(this._expressPort, () => {
+      console.log(`Server is running on http://localhost:${ this._expressPort }`);
+    })
   }
   async cut (): Promise<void> {
     this._obsHook.cut()
   }
   async setLayout (sceneSlug: string): Promise<void> {
-    this._obsHook.setLayout(sceneSlug)
+    return this._obsHook.setLayout(sceneSlug)
   }
   async setSlot (slotSlug: string, sourceSlug: string): Promise<void> {
-    this._obsHook.setSlot(slotSlug, sourceSlug)
+    return this._obsHook.setSlot(slotSlug, sourceSlug)
   }
   async muteAudio (sourceSlug: string, mute: boolean): Promise<void> {
-    this._obsHook.muteAudio(sourceSlug, mute)
+    return this._obsHook.muteAudio(sourceSlug, mute)
   }
   async muteAllAudio (mute: boolean): Promise<void> {
-    this._obsHook.muteAllAudio(mute)
+    return this._obsHook.muteAllAudio(mute)
   }
   async increaseAudio (sourceSlug: string, percentageChange: number): Promise<number> {
     console.log('sourceSlug, percentageChange :', sourceSlug, percentageChange)

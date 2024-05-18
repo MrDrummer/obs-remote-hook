@@ -1,3 +1,5 @@
+import { Config } from "./config"
+
 export interface Command {
   command: string
 }
@@ -60,3 +62,21 @@ export interface GetConfig extends Command {
 }
 
 export type ObsCommand = Cut | SetLayout | SetSlot | MuteAudio | MuteAllAudio | IncreaseAudio | DecreaseAudio | SetAudio | StartStream | StopStream | GetConfig
+
+
+export interface IncreaseAudioResult {
+  command: "increaseAudio"
+  result: number
+}
+
+export interface DecreaseAudioResult {
+  command: "decreaseAudio"
+  result: number
+}
+
+export interface ConfigResult {
+  command: "getConfig"
+  result: Config
+}
+
+export type ObsCommandResult = IncreaseAudioResult | DecreaseAudioResult | ConfigResult

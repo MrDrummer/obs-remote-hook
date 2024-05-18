@@ -1,4 +1,4 @@
-import { Config, Layout, Scene } from "@obs-hook/models";
+import { Audio, Config, Layout, Scene } from "@obs-hook/models";
 
 export class ConfigHelper {
   readonly _config: Config
@@ -36,6 +36,14 @@ export class ConfigHelper {
 
   public getLayoutFromSlug (layoutSlug: string): Layout | undefined {
     return this._config.layouts.find(l => l.slug === layoutSlug)
+  }
+
+  public getSlotFromSlug (slotSlug: string): Scene | undefined {
+    return this._config.slots.find(s => s.slug === slotSlug)
+  }
+
+  public getAudioFromSlug (audioSlug: string): Audio | undefined {
+    return this._config.audio.find(a => a.slug === audioSlug)
   }
 
   public getSlotsThatUseScene (sceneSlug: string): Scene[] {
