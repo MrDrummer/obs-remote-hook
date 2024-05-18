@@ -66,3 +66,5 @@ I am not 100% on the technology stack yet. I am considering:
 - Cut
   - Cuts to the configured scene
   - Intended for emergency cut-away
+- Switch
+  - Switches the currently active slots

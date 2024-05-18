@@ -135,8 +135,17 @@ Breakdown:
 
 
 ## Dev Notes
-- Uses Node 22
+- Uses Node 20
 - Yarn Berry for workspace management
 - ESLint for linting
 - Typescript for type safety
-- TSConfig extends @tsconfig/node22
+
+
+
+
+
+# TODO
+- Update this readme
+- CLI to prevent overlapping commands (e.g. only 1 layout, only 1 update per slot)
+  - Probably easier to do this on commit - Use the most recently added version (assume further assignments are overwrites)
+- Handle audio and other commands on the backend
