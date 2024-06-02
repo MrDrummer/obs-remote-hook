@@ -9,6 +9,8 @@ import { HttpHandler } from "./handler"
 const parseYaml = <T> (relativePath: string): T => {
   const filePath = path.join(__dirname, relativePath)
 
+  console.log('filePath :', filePath)
+
   const file = fs.readFileSync(filePath, "utf8")
   const data: T = YAML.parse(file)
   return data
@@ -17,7 +19,9 @@ const parseYaml = <T> (relativePath: string): T => {
 const run = async () => {
   const configDir = "../../../config"
   const obsConfig: Config = parseYaml<Config>(`${ configDir }/config.yaml`)
+  console.log('obsConfig :', obsConfig)
   const obsSecrets: BaseSecrets = parseYaml<BaseSecrets>(`${ configDir }/secrets.yaml`)
+  console.log('obsSecrets :', obsSecrets)
 
   const hook = new ObsHook(obsConfig, obsSecrets)
 

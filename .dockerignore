@@ -1,0 +1,8 @@
+.git
+.idea
+.vscode
+**/*.md
+**/dist
+**/tsconfig.tsbuildinfo
+frontend
+config

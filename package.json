@@ -8,7 +8,10 @@
     "buildall": "yarn workspaces foreach -At run build",
     "start": "yarn workspace @obs-hook/http start",
     "dev": "yarn workspace @obs-hook/http dev",
-    "devstart": "yarn buildall && yarn start"
+    "devstart": "yarn buildall && yarn start",
+    "docker:build": "docker build -t obs-remote-hook .",
+    "docker:build:debug": "docker build -t obs-remote-hook . --no-cache --progress=plain",
+    "docker:run": "yarn docker:build:debug && docker run -v ./config:/usr/src/app/config -p 3000:3000 obs-remote-hook"
   },
   "devDependencies": {
     "typescript": "^5.4.5"

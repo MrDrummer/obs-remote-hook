@@ -13,3 +13,7 @@ yarn-error.log
 
 config.yaml
 secrets.yaml
+*.config.yaml
+*.secrets.yaml
+!example.config.yaml
+!example.secrets.yaml

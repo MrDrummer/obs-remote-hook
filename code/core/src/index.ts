@@ -76,10 +76,10 @@ export class ObsHook implements IObsHook {
     // Need to get the existing scene items in order to get the sceneItemId.
     const sceneItems = await this.getSceneItems(slotConfig.scene)
 
-    const sourceConfig = this._configHelper.getSceneFromSlug(sourceSlug)
+    const sourceConfig = this._configHelper.getSceneFromSlug(sourceSlug) ?? this._configHelper.getSlotFromSlug(sourceSlug)
 
     if (sourceConfig == null) {
-      throw new Error(`Scene ${ slotConfig.scene } not found`)
+      throw new Error(`Scene ${ sourceSlug } not found`)
     }
 
     // console.log('sceneItems :', sceneItems)
