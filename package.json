@@ -6,7 +6,7 @@
   ],
   "scripts": {
     "buildall": "yarn workspaces foreach -At run build",
-    "start": "yarn workspace @obs-hook/http start",
+    "start": "yarn buildall && (pm2 restart obs --no-autorestart -- --color || pm2 start core/http/dist/index.js --name=\"obs\" --no-autorestart -- --color)",
     "dev": "yarn workspace @obs-hook/http dev",
     "devstart": "yarn buildall && yarn start",
     "docker:build": "docker build -t obs-remote-hook .",
