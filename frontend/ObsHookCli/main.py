@@ -159,7 +159,11 @@ def main():
         write_autocommit_state(auto_commit)
         logging.info(f'Auto-commit mode set to {auto_commit}.')
 
-    if args.commit:
+    if args.cut:
+        clear_queue()
+        command_dict = {'command': args.command}
+        handle_command(command_dict, True)
+    elif args.commit:
         commands = read_queue()
         if commands:
             send_to_api(commands)

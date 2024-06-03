@@ -25,7 +25,7 @@ const run = async () => {
 
   const hook = new ObsHook(obsConfig, obsSecrets)
 
-  const obsHandler = new HttpHandler(hook)
+  const obsHandler = new HttpHandler(hook, 3030)
 
   await obsHandler.setup()
 
