@@ -123,11 +123,11 @@ def main():
     parser_set_slot.add_argument('slotSlug', type=str, nargs='?', help='Slot number')
     parser_set_slot.add_argument('sourceSlug', type=str, nargs='?', help='Name of the source')
 
-    parser_mute_audio = subparsers.add_parser('muteAudio')
+    parser_mute_audio = subparsers.add_parser('mute')
     parser_mute_audio.add_argument('sourceSlug', type=str, nargs='?', help='Audio channel')
     parser_mute_audio.add_argument('mute', type=bool, nargs='?', help='Mute (True/False)')
 
-    parser_mute_all_audio = subparsers.add_parser('muteAllAudio')
+    parser_mute_all_audio = subparsers.add_parser('muteAll')
     parser_mute_all_audio.add_argument('mute', type=bool, nargs='?', help='Mute all audio (True/False)')
 
     parser_increase_audio = subparsers.add_parser('increaseAudio')
@@ -159,7 +159,7 @@ def main():
         write_autocommit_state(auto_commit)
         logging.info(f'Auto-commit mode set to {auto_commit}.')
 
-    if args.cut:
+    if args.command == 'cut':
         clear_queue()
         command_dict = {'command': args.command}
         handle_command(command_dict, True)
@@ -180,10 +180,10 @@ def main():
         elif args.command == 'setSlot':
             command_dict['slotSlug'] = args.slotSlug
             command_dict['sourceSlug'] = args.sourceSlug
-        elif args.command == 'muteAudio':
+        elif args.command == 'mute':
             command_dict['sourceSlug'] = args.sourceSlug
             command_dict['mute'] = args.mute
-        elif args.command == 'muteAllAudio':
+        elif args.command == 'muteAll':
             command_dict['mute'] = args.mute
         elif args.command == 'increaseAudio':
             command_dict['sourceSlug'] = args.sourceSlug

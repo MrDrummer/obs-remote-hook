@@ -44,10 +44,10 @@ I am not 100% on the technology stack yet. I am considering:
 - SetLayout
   - LayoutName
   - Sets the layout
-- MuteAudio
+- Mute
   - AudioChannel, Mute [true/false] 
   - Mutes or unmutes the specified audio channel
-- MuteAllAudio
+- MuteAll
   - Mute [true/false]
   - Mutes or unmutes all audio channels
 - IncreaseAudio

@@ -53,11 +53,11 @@ export class HttpHandler implements IHandler {
   async setSlot (slotSlug: string, sourceSlug: string): Promise<void> {
     return this._obsHook.setSlot(slotSlug, sourceSlug)
   }
-  async muteAudio (sourceSlug: string, mute: boolean): Promise<void> {
-    return this._obsHook.muteAudio(sourceSlug, mute)
+  async mute (sourceSlug: string, mute: boolean): Promise<void> {
+    return this._obsHook.mute(sourceSlug, mute)
   }
-  async muteAllAudio (mute: boolean): Promise<void> {
-    return this._obsHook.muteAllAudio(mute)
+  async muteAll (mute: boolean): Promise<void> {
+    return this._obsHook.muteAll(mute)
   }
   async increaseAudio (sourceSlug: string, percentageChange: number): Promise<number> {
     console.log('sourceSlug, percentageChange :', sourceSlug, percentageChange)
@@ -92,10 +92,10 @@ export class HttpHandler implements IHandler {
         return this.setLayout(command.sceneSlug)
       case "setSlot":
         return this.setSlot(command.slotSlug, command.sourceSlug)
-      case "muteAudio":
-        return this.muteAudio(command.sourceSlug, command.mute)
-      case "muteAllAudio":
-        return this.muteAllAudio(command.mute)
+      case "mute":
+        return this.mute(command.sourceSlug, command.mute)
+      case "muteAll":
+        return this.muteAll(command.mute)
       case "increaseAudio":
         return this.increaseAudio(command.sourceSlug, command.percentageChange)
       case "decreaseAudio":

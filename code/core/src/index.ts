@@ -111,7 +111,7 @@ export class ObsHook implements IObsHook {
     await this._obs.callBatch(changes)
   }
 
-  public async muteAudio (sourceSlug: string, mute: boolean): Promise<void> {
+  public async mute (sourceSlug: string, mute: boolean): Promise<void> {
     const audioConfig = this._configHelper.getAudioFromSlug(sourceSlug)
 
     if (audioConfig == null) {
@@ -127,7 +127,7 @@ export class ObsHook implements IObsHook {
     return out.inputAudioBalance
   }
 
-  public async muteAllAudio (mute: boolean): Promise<void> {
+  public async muteAll (mute: boolean): Promise<void> {
     console.log('mute :', mute)
     // await this._obs.call("SetMute", { source: "all", mute })
   }

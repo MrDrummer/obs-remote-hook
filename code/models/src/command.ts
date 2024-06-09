@@ -20,14 +20,14 @@ export interface SetSlot extends Command {
 }
 
 
-export interface MuteAudio extends Command {
-  command: "muteAudio"
+export interface Mute extends Command {
+  command: "mute"
   sourceSlug: string
   mute: boolean
 }
 
-export interface MuteAllAudio extends Command {
-  command: "muteAllAudio"
+export interface MuteAll extends Command {
+  command: "muteAll"
   mute: boolean
 }
 
@@ -61,7 +61,7 @@ export interface GetConfig extends Command {
   command: "getConfig"
 }
 
-export type ObsCommand = Cut | SetLayout | SetSlot | MuteAudio | MuteAllAudio | IncreaseAudio | DecreaseAudio | SetAudio | StartStream | StopStream | GetConfig
+export type ObsCommand = Cut | SetLayout | SetSlot | Mute | MuteAll | IncreaseAudio | DecreaseAudio | SetAudio | StartStream | StopStream | GetConfig
 
 
 export interface IncreaseAudioResult {
